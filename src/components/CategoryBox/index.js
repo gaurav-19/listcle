@@ -6,7 +6,7 @@ import { colors } from "../../utils/colors";
 
 const CategoryBox = ({ title, image, onPress, isFirst, isSelected }) => {
     return (
-        <Pressable style={[styles.container, isFirst ? { marginLeft: 16 } : {} ]} onPress={onPress}>
+        <Pressable style={[styles.container, isFirst ? { marginLeft: 24 } : {} ]} onPress={onPress}>
             <View style={[styles.imageContainer, isSelected ? {backgroundColor: colors.black } : {}]}>
                 <Image style={styles.image} source={{uri : image}}/>
             </View>

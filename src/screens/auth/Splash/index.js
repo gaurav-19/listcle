@@ -15,11 +15,17 @@ const Splash = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Image resizeMode="contain" style={styles.image} source={require('../../../assets/splash_image.png')} />
-            <Text style={styles.title}>You'll Find</Text>
-            <Text style={[styles.title, styles.innerTitle]}>All you need</Text> 
-            <Text style={styles.title}>Here!</Text>
 
-            <Button onPress={onSignup} title="Sign Up"></Button>
+            <View style={styles.titleContainer}>
+                <Text style={styles.title}>You'll Find</Text>
+                <Text style={[styles.title, styles.innerTitle]}>All you need</Text> 
+                <Text style={styles.title}>Here!</Text>
+            </View>        
+
+            <View style={ styles.buttonContainer}>
+                <Button onPress={onSignup} title="Sign Up"></Button>
+            </View>
+            
             <Pressable onPress={onSignin} hitSlop={20}>
                 <Text style={styles.footerText}>Sign In</Text>
             </Pressable>

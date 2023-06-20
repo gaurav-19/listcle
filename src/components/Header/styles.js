@@ -16,8 +16,8 @@ export const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     icon : {
-        width: 24,
-        height: 24
+        // width: 24,
+        // height: 24
     },
     space:{
         width: 24,

@@ -24,8 +24,8 @@ export const styles = StyleSheet.create({
         paddingBottom: 8  
     },
     icon:{
-        width: 24,
-        height: 24,
+        // width: 24,
+        // height: 24,
         marginLeft: 8
     },
     content:{

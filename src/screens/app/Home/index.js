@@ -9,7 +9,7 @@ import { categories } from "../../../data/categories";
 import { products } from "../../../data/products";
 import ProductHomeItem from "../../../components/ProductHomeItem";
 
-const Home = ({ }) => {
+const Home = ({ navigation }) => {
     const [selectedCategory, setSelectedCategory] = useState();
     const [keyword, setKeyword] = useState();
     const [filteredProducts, setFilteredProduct] = useState(products)
@@ -41,9 +41,13 @@ const Home = ({ }) => {
         )
     }
 
-    const renderProductItem = ({ item, index }) => {
+    const renderProductItem = ({ item }) => {
+        const onProductPress = (product) => {
+            navigation.navigate("ProductDetails", { product });
+        }
+
         return(
-            <ProductHomeItem {...item}/>
+            <ProductHomeItem onPress={() => onProductPress(item)} {...item}/>
         )
     }
 
@@ -54,7 +58,7 @@ const Home = ({ }) => {
             <FlatList style={ styles.list } data={categories} showsHorizontalScrollIndicator={false} horizontal renderItem={renderCategoryItem} keyExtractor={(item, index ) => String(index) } />
 
             <FlatList style={styles.productList} numColumns={2} data={filteredProducts} renderItem={renderProductItem} keyExtractor={(item) => String(item.id)}
-            // ListFooterComponent={<View style={{ height: 200 }}/>}
+            ListFooterComponent={<View style={{ height: 200 }}/>}
             />
         </SafeAreaView>
     )

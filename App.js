@@ -11,12 +11,27 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { colors } from './src/utils/colors';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Home from './src/screens/auth/Home';
-import Favorites from './src/screens/auth/Favorites';
-import Profile from './src/screens/auth/Profile';
+import Home from './src/screens/app/Home';
+import Favorites from './src/screens/app/Favorites';
+import Profile from './src/screens/app/Profile';
+import ProductDetails from './src/screens/app/ProductDetails';
+import Settings from './src/screens/app/Settings';
+import CreateListing from './src/screens/app/CreateListing';
+import MyListing from './src/screens/app/MyListing';
 
   const Stack = createNativeStackNavigator();
   const Tab = createBottomTabNavigator();
+
+  const ProfileStack = () => {
+    return (
+    <Stack.Navigator>
+      <Stack.Screen name="Profile" component={Profile} options={ {headerShown: false} }/>
+      <Stack.Screen name="Settings" component={Settings} options={ {headerShown: false} }/>
+      <Stack.Screen name="CreateListing" component={CreateListing} options={ {headerShown: false} }/>
+      <Stack.Screen name="MyListing" component={MyListing} options={ {headerShown: false} }/>
+    </Stack.Navigator>
+    )
+  }
 
   const Tabs = () => (
     <Tab.Navigator 
@@ -28,7 +43,7 @@ import Profile from './src/screens/auth/Profile';
           icon = focused
             ? require('./src/assets/home_active.png')
             : require('./src/assets/home.png');
-        } else if (route.name === 'Profile') {
+        } else if (route.name === 'ProfileStack') {
           icon = focused
             ? require('./src/assets/profile_active.png')
             : require('./src/assets/profile.png');
@@ -47,7 +62,7 @@ import Profile from './src/screens/auth/Profile';
     })} >
       <Tab.Screen name='Home' component={Home} />
       <Tab.Screen name='Favorites' component={Favorites} />
-      <Tab.Screen name='Profile' component={Profile} />
+      <Tab.Screen name='ProfileStack' component={ProfileStack} />
     </Tab.Navigator>
   )
 
@@ -65,6 +80,7 @@ import Profile from './src/screens/auth/Profile';
           <Stack.Navigator>
             {isSignedIn ? <>
             <Stack.Screen name="Tabs" component={Tabs}options={ {headerShown: false} }/>
+            <Stack.Screen name="ProductDetails" component={ProductDetails} options={ {headerShown: false} }/>
             </> :
             <>
             <Stack.Screen name="Splash" component={Splash} options={ {headerShown: false} }/>
